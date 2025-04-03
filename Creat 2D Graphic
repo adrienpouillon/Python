@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+
+def f(x):
+    return(-x**3+2)
+
+X=[]
+Y=[]
+n=20 #nombre de points
+xmin=-2 #bornes de x
+xmax=2 #bornes de x
+dx=(xmax-xmin)/(n-1) #variation de x
+for i in range(n):
+    x=xmin+dx*i
+    X.append(x)
+    Y.append(f(x))
+
+plt.plot(X,Y) #construit la figure
+
+plt.show() #trace la figure
