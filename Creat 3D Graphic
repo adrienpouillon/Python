@@ -1,0 +1,33 @@
+
+import matplotlib.pyplot as plt
+
+#fonction étudier
+def f(x,y):
+    return(-x**2+3*y-2)
+
+X=[]
+Y=[]
+Z=[]
+
+n=10000 #nombre de points
+xmin=-4 #bornes de x
+xmax=4 #bornes de x
+ymin=-4 #bornes de y
+ymax=4 #bornes de y
+dx=(xmax-xmin)/(n-1) #variation de x
+dy=(ymax-ymin)/(n-1) #variation de x
+
+for i in range(int(n**(1/2))):
+    for j in range(int(n**(1/2))):
+        x=xmin+dx*i
+        y=ymin+dy*j
+        X.append(x)
+        Y.append(y)
+        Z.append(f(x,y))
+
+
+# moteur de rendu
+fig = plt.figure() #Création de la figure
+ax = plt.axes(projection='3d') #Definition du tracé 3D
+ax.scatter3D(X, Y, Z); #Définition des axes
+plt.show()
