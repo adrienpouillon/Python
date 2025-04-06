@@ -1,0 +1,54 @@
+import matplotlib.pyplot as plt
+
+def transpose(A):
+    lenght_col=len(A)
+    lenght_lin=len(A[0])
+    C=[]
+    for i in range (lenght_lin):
+        C.append([])
+        for j in range (lenght_col):
+             C[i].append(A[j][i])
+            
+    return(C)
+
+def carre(n,xmin,ymin,a):
+    x=0
+    y=1
+    z=2
+    W=[[],[],[]]
+    dx=a/(n-1) #variation de x
+    dy=a/(n-1) #variation de y
+    for i in range (n):
+        for j in range (a):
+            px=xmin+dx*i+j
+            py=ymin+dy*i
+            W[x].append(px)
+            W[y].append(py)
+            W[z].append(f(px,py))
+    
+    return (W)
+
+#print_matrix(T)
+def print_matrix(m):
+    lenght=len(m)
+    for i in range (lenght):
+        print(m[i])
+        
+
+#fonction étudier
+def f(x,y):
+    return(-2*x+y+3)
+
+n=50 #nombre de points
+xmin=-1 #bornes de x
+ymin=-1 #bornes de y
+lenght_cube=100
+W=carre(n,xmin,ymin,lenght_cube)
+#T=transpose(W)
+
+
+# moteur de rendu
+fig = plt.figure() #Création de la figure
+ax = plt.axes(projection='3d') #Definition du tracé 3D
+ax.scatter3D(W[0],W[1],W[2]); #Définition des axes
+plt.show()
