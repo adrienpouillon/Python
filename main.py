@@ -63,9 +63,10 @@ def somme_matrix(A,B):
                 C[i].append(A[i][j]+B[i][j])
             
     return(C)
-
-#L1=[1,2,3],[1,0,1],[0,0,0]
-#L2=[3,2,1],[0,3,0],[0,0,0]
+"""
+L1=[1,2,3],[1,0,1],[0,0,0]
+L2=[3,2,1],[0,3,0],[0,0,0]
+"""
 ####################somme_matrix(A,B)
 
 ####################prod_matrix_vect(A,u)
@@ -83,9 +84,11 @@ def prod_matrix_vect(A,u):
         
     return(C)
 
-#L1=[1,2,3,4],[1,0,1,0],[0,0,0,0],[1,2,3,4]
-#a=[1,3,1,3]
-#print_matrix(prod_matrix_vect(L1,a))
+"""
+L1=[1,2,3,4],[1,0,1,0],[0,0,0,0],[1,2,3,4]
+a=[1,3,1,3]
+print_matrix(prod_matrix_vect(L1,a))
+"""
 ####################prod_matrix_vect(A,u)
 
 ####################prod_matrix(A,B)
@@ -104,8 +107,70 @@ def prod_matrix(A,B):
             
         
     return(C)
-    
+
+"""
 L1=[1,2,3],[1,0,1],[0,0,0]
 L2=[3,2,1],[0,3,0],[0,0,0]
 print_matrix(prod_matrix(L1,L2))
+"""
 ####################prod_matrix(A,B)
+
+####################transpose(A)
+def transpose(A):
+    lenght_col=len(A)
+    lenght_lin=len(A[0])
+    C=[]
+    for i in range (lenght_lin):
+        C.append([])
+        for j in range (lenght_col):
+             C[i].append(A[j][i])
+            
+    return(C)
+
+"""
+L1=[1,2,3],[1,0,1],[0,0,0]
+print_matrix(transpose(L1))
+"""
+####################transpose(A)
+
+####################carre(n,xmin,ymin,a)
+def carre(n,xmin,ymin,a):
+    x=0
+    y=1
+    z=2
+    W=[[],[],[]]
+    dx=a/(n-1) #variation de x
+    dy=a/(n-1) #variation de y
+    for i in range (n):
+        for j in range (a):
+            px=xmin+dx*i+j
+            py=ymin+dy*i
+            W[x].append(px)
+            W[y].append(py)
+            W[z].append(f(px,py))
+    
+    return (W)
+"""
+n=50 #nombre de points
+xmin=-1 #bornes de x
+ymin=-1 #bornes de y
+lenght_cube=100
+W=carre(n,xmin,ymin,lenght_cube)
+"""
+####################carre(n,xmin,ymin,a)
+
+####################renderer_3D
+def renderer_3D(W)
+    x=0
+    y=1
+    z=2
+    fig = plt.figure() #Création de la figure
+    ax = plt.axes(projection='3d') #Definition du tracé 3D
+    ax.scatter3D(W[x],W[y],W[z]); #Définition des axes
+    plt.show()
+
+"""
+L1=[1,2,3],[1,0,1],[0,0,0]
+renderer_3D(L1)
+"""
+####################renderer_3D
