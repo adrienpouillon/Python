@@ -73,11 +73,12 @@ L2=[3,2,1],[0,3,0],[0,0,0]
 def prod_matrix_vect(A,u):
     lenght_a=len(A)
     lenght_u=len(u)
+    lenght_a0=len(A[0])
     C=[[]]
-    if(lenght_a==len(u) and len(A[0])==len(u)):
+    if(lenght_a==lenght_u and lenght_a0==lenght_u):
         for i in range (lenght_a):
             w=0
-            for k in range (len(A[0])):
+            for k in range (lenght_a0):
                 w=w+A[k][i]*u[i]
             C[0].append(w)
             
