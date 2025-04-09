@@ -103,13 +103,13 @@ def prod_matrix_vect(A,u):
     lenght_a=len(A)
     lenght_u=len(u)
     lenght_a0=len(A[0])
-    C=[[]]
-    if(lenght_a==lenght_u and lenght_a0==lenght_u):
+    C=[]
+    if(lenght_a0==lenght_u):
         for i in range (lenght_a):
             w=0
-            for k in range (lenght_a0):
-                w=w+A[k][i]*u[i]
-            C[0].append(w)
+            for j in range (lenght_a0):
+                w=w+A[i][j]*u[j]
+            C.append(w)
             
         
     return(C)
@@ -129,7 +129,7 @@ def prod_matrix(A,B):
     if(len(A[0]) == lenght_b):
         for i in range (lenght_a):
             C.append([])
-            for j in range (len(B[0])):#lenght_b
+            for j in range (len(B[0])):
                 w=0
                 for k in range (lenght_b):
                     w=w+A[i][k]*B[k][j]
@@ -204,3 +204,30 @@ L1=[1,2,3],[1,0,1],[0,0,0]
 renderer_3D(L1)
 """
 ####################renderer_3D
+
+####################projection_matrix(normal,direction,point)
+def projection_matrix(normal,direction,point):
+    lenght_n=len(normal)
+    lenght_d=len(direction)
+    scalar=prodscal_vect(normal,direction)
+    P=[]
+    for i in range (lenght_d):
+        P.append([])
+        for j in range (lenght_n):
+            P[i].append((-normal[j]*direction[i])/scalar)
+            
+           
+    P=somme_matrix(P,identite(3))
+    return(P)
+####################projection_matrix(normal,direction,point)
+
+####################projection(normal,direction,const,point)
+def projection(normal,direction,const,point):
+    P=projection_matrix(normal,direction,point)
+    I3=prod_matrix_scalar(identite(3),-1)
+    LI=somme_matrix(P,I3)
+    T=[0,0,-const*normal[2]]
+    A=prod_matrix_vect(LI,T)
+    C=prod_matrix_vect(P,point)
+    return (somme_vect(C,A))
+####################projection(normal,direction,const,point)
