@@ -69,6 +69,35 @@ L2=[3,2,1],[0,3,0],[0,0,0]
 """
 ####################somme_matrix(A,B)
 
+####################prod_matrix_scalar(A,u)
+def prod_matrix_scalar(A,k):
+    lenght_a=len(A)
+    lenght_a0=len(A[0])
+    for i in range (lenght_a):
+        for j in range (lenght_a0):
+            A[i][j]=A[i][j]*k
+            
+        
+    return(A)
+####################prod_matrix_scalar(A,u)
+
+####################somme_matrix_vect(A,u)
+def somme_matrix_vect(A,u):
+    lenght_a=len(A)
+    lenght_u=len(u)
+    lenght_a0=len(A[0])
+    C=[]
+    if(lenght_a==lenght_u and lenght_a0==lenght_u):
+        for i in range (lenght_a):
+            w=0
+            for k in range (lenght_a0):
+                w=w+A[k][i]+u[i]
+            C.append(w)
+            
+        
+    return(C)
+####################somme_matrix_vect(A,u)
+
 ####################prod_matrix_vect(A,u)
 def prod_matrix_vect(A,u):
     lenght_a=len(A)
